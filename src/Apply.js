@@ -29,7 +29,7 @@ function Apply(props) {
                 field: '',
             })
             props.addData(data)
-            alert("Submit Successfully!")
+            alert("Submitted Successfully!")
         } else {
             alert("Error!: Fill all fields")
         }
