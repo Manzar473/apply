@@ -5,7 +5,7 @@ function Card({ data }) {
     return (
         <div onClick={() => { setdetail(!detail) }} className='cardConatiner'>
             <p><span className='printedSpan'>Name: </span>{data.name}</p>
-            <p><span className='printedSpan'>Last Semester:</span>{data.lastSem}</p>
+            <p><span className='printedSpan'>Class:</span>{data.lastSem}</p>
             {detail && <> <p><span className='printedSpan'>Reg No: </span>{data.regNo}</p>
                 <p><span className='printedSpan'>Phone:</span>{data.phone}</p>
                 <p><span className='printedSpan'>Email:</span>{data.email}</p>

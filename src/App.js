@@ -23,7 +23,7 @@ function App() {
   }, [])
 
 
-  const addData = async (data) => {
+  const addData = async (data, other) => {
     const id = "sauI6TejgAmR2njNZYqN"
     const userDoc = doc(db, "apply", id)
     const newData = {
@@ -35,7 +35,7 @@ function App() {
         email: data.email,
         lastSem: data.lastSem,
         gpa: data.gpa,
-        field: data.field,
+        field: data.field === 'Other' ? other : data.field,
       }
       ]
     }

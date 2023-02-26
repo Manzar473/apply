@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 function Apply(props) {
+    const [other, setother] = useState('')
     const [data, setdata] = useState({
         name: '',
         regNo: '',
@@ -18,7 +19,7 @@ function Apply(props) {
     }, [data])
 
     const submit = () => {
-        if (data.name && data.regNo && data.phone && data.email && data.lastSem && data.gpa && data.field) {
+        if (data.name && data.regNo && data.phone && data.email && data.lastSem && data.gpa && (data.field === 'Other' ? other : data.field)) {
             setdata({
                 name: '',
                 regNo: '',
@@ -28,7 +29,8 @@ function Apply(props) {
                 gpa: '',
                 field: '',
             })
-            props.addData(data)
+            setother('')
+            props.addData(data, other)
             alert("Submitted Successfully!")
         } else {
             alert("Error!: Fill all fields")
@@ -46,7 +48,7 @@ function Apply(props) {
                 <input value={data.regNo} type='text' placeholder='Reg No..' onChange={(e) => setdata({ ...data, regNo: e.target.value })}></input>
                 <input value={data.phone} type='number' placeholder='Phone no..' onChange={(e) => setdata({ ...data, phone: e.target.value })}></input>
                 <input value={data.email} type='email' placeholder='Email..' onChange={(e) => setdata({ ...data, email: e.target.value })}></input>
-                <input value={data.lastSem} type='text' placeholder='Last semester passed..' onChange={(e) => setdata({ ...data, lastSem: e.target.value })}></input>
+                <input value={data.lastSem} type='text' placeholder='Class..' onChange={(e) => setdata({ ...data, lastSem: e.target.value })}></input>
                 <input value={data.gpa} type='number' placeholder='Last semester GPA..' onChange={(e) => setdata({ ...data, gpa: e.target.value })}></input>
                 <select value={data.field} name="field" id="field" onChange={(e) => setdata({ ...data, field: e.target.value })}>
                     <option value="" disabled selected>Field of Interest</option>
@@ -58,7 +60,9 @@ function Apply(props) {
                     <option value="Pet Centers">Pet Centers</option>
                     <option value="Pathological Laboratories">Pathological Laboratories</option>
                     <option value="Public Health">Public Health</option>
+                    <option value="Other">Other</option>
                 </select>
+                {data.field === 'Other' && <input value={other} type='text' placeholder='Enter your field' onChange={(e) => setother(e.target.value)}></input>}
                 <button onClick={submit}>Submit</button>
             </div>
         </div>
