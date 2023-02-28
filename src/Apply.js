@@ -40,8 +40,8 @@ function Apply(props) {
     }
     return (
         <div>
-            <h1>Hi! Welcome to <span>paid internship portal</span></h1>
-            <h3>An Employment program through job fair</h3>
+            <h1>Hi! Welcome to <span>JobFair</span></h1>
+            <h3>An Employment program through JobFair</h3>
             <div className='form'>
                 <h3>Please put your necessarily information</h3>
                 <input value={data.name} type='text' placeholder='Name..' onChange={(e) => setdata({ ...data, name: e.target.value })}></input>
